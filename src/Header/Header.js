@@ -18,6 +18,9 @@ class Header extends Component {
         </div>
         <div className="main-Head">
           <div className="content-Head">
+            <span>
+              <a href="/">haZard</a>
+            </span>
             <ul className="ul-menu">
               <li class="li-menu">
                 <a href="/">Menu 1</a>

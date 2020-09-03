@@ -173,7 +173,7 @@ class mapComp extends Component {
         id="myMap"
         style={{
           width: "100%",
-          height: "700px",
+          height: "500px",
         }}
       ></div>
     );

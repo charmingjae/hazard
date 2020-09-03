@@ -24,23 +24,54 @@ html{
 }
 
 .main-Head{
-    height: 90px;
+    height: 70px;
     width:100%;
     background-color:white;
     margin-top: 30px;
-    padding-bottom: 20px;
     border-top: 1px solid #8d847f;
     border-bottom: 1px solid #8d847f;
 }
 
 .content-Head{
     width: 80%;
-    height: 80px;
-    margin-left: 10%;
-    background-color: black;
+    height: 50px;
+    /* margin-left: 10%; */
+    background-color: white;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content-Head > span > a{
+    float: left;
+    font-size: 30px;
+    text-decoration: none;
+}
+a:link{
+    text-decoration: none;
+    color: #646c64;
+}
+a:visited{
+    text-decoration: none;
+    color: #646c64;
+}
+a:active{
+    text-decoration: none;
+    color: #646c64;
+}
+
+.content-Head > span{
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translate(-50%, -50%);
 }
 
 .ul-menu{
+    margin: 0;
+    padding : 0;
+    padding-top: 15px;
     text-align: center;
 }
 .ul-menu li a {
@@ -48,10 +79,15 @@ html{
     font-weight: 500;
     color: #4a4a4a;
     width: 100%;
-    color: white;
-    text-decoration : none;
+    text-decoration: none;
+    font-size: 16px;
+}
+ul{
+    text-align:center;
+
 }
 li{
     margin-left: 20px;
-    float: left;
+    /* float: left; */
+    display:inline-block;
 }
