@@ -23,6 +23,17 @@ html{
     font-size: 16px;
 }
 
+.top-Head > a{
+    color: greenyellow;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.top-Head > a:hover{
+    color: #008080;
+}
+
 .main-Head{
     height: 70px;
     width:100%;
@@ -47,19 +58,21 @@ html{
     float: left;
     font-size: 30px;
     text-decoration: none;
+    font-weight: 700;
 }
-a:link{
+.content-Head > span > a:link{
     text-decoration: none;
     color: #646c64;
 }
-a:visited{
+.content-Head > span > a:visited{
     text-decoration: none;
     color: #646c64;
 }
-a:active{
+.content-Head > span > a:active{
     text-decoration: none;
     color: #646c64;
 }
+
 
 .content-Head > span{
     position: absolute;
@@ -90,4 +103,8 @@ li{
     margin-left: 20px;
     /* float: left; */
     display:inline-block;
+}
+
+.ul-menu li a:hover{
+    color: #4aa886;
 }

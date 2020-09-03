@@ -14,7 +14,8 @@ class Header extends Component {
     return (
       <div className="divHead">
         <div className="top-Head">
-          <b> 안녕하세요! </b>
+          <b> haZard를 방문 해주셔서 감사합니다. </b>
+          <a href="/"> 위치 제공 여부를 확인해주세요! </a>
         </div>
         <div className="main-Head">
           <div className="content-Head">

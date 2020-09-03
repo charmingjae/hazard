@@ -4,8 +4,17 @@
 /* global kakao */
 import React, { Component } from "react";
 import { markerdata } from "../JSON/csvjson";
+import "../css/mapComp.css";
 
 class mapComp extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lat: 0,
+      long: 0,
+    };
+  }
+
   componentDidMount() {
     // infoWindow
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
@@ -13,9 +22,14 @@ class mapComp extends Component {
     // 내 위도 경도 가져오기
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
+      var arrShort = [];
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       navigator.geolocation.getCurrentPosition(
         function (position) {
+          // 위도, 경도 바인딩
+
+          // 최단거리 검사할 배열
+
           var lat = position.coords.latitude, // 위도
             lon = position.coords.longitude; // 경도
           // 지도 띄우기
@@ -30,9 +44,6 @@ class mapComp extends Component {
             map: map, // 마커를 표시할 지도
             position: new kakao.maps.LatLng(lat, lon), // 마커를 표시할 위치
           });
-
-          // 최단거리 검사할 배열
-          var arrShort = [];
 
           // 마커 이미지 주소
           var imageSrc =
@@ -116,6 +127,7 @@ class mapComp extends Component {
             arrShort.sort(function (a, b) {
               return a[sortingField] - b[sortingField];
             });
+
             // console.log("arrShort : ", arrShort);
           }
 
@@ -168,14 +180,23 @@ class mapComp extends Component {
   }
 
   render() {
+    var shrtLat = this.state.lat;
+    var shrtLong = this.state.long;
+    console.log("shortLat : ", this.state.lat);
+    console.log("shortLong : ", this.state.long);
     return (
-      <div
-        id="myMap"
-        style={{
-          width: "100%",
-          height: "500px",
-        }}
-      ></div>
+      <>
+        <div
+          id="myMap"
+          style={{
+            width: "100%",
+            height: "500px",
+          }}
+        ></div>
+        <div className="shltInfo">
+          현재 내 위치와 가장 가까운 위치 : {shrtLat}, {shrtLong}
+        </div>
+      </>
     );
   }
 }
