@@ -2,6 +2,7 @@
 // velog.io/@bearsjelly
 import React, { Component } from "react";
 import Mapcomp from "./MapComp/mapComp";
+import Header from "./Header/Header";
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +14,9 @@ class App extends Component {
   render() {
     return (
       <>
+        <div className="Head">
+          <Header />
+        </div>
         <div className="Body">{this.state.page === "Map" && <Mapcomp />}</div>
       </>
     );
