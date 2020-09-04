@@ -27,7 +27,7 @@ class mapComp extends Component {
     if (navigator.geolocation) {
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       navigator.geolocation.getCurrentPosition(
-        function (position) {
+        function test(position) {
           // 위도, 경도 바인딩
           var lat = position.coords.latitude, // 위도
             lon = position.coords.longitude; // 경도
@@ -116,13 +116,8 @@ class mapComp extends Component {
               long: markerdata[i].long,
               length: lengthPath,
             };
-            // var arrPath = new Map();
-            // arrPath.set("lat", markerdata[i].lat);
-            // arrPath.set("long", markerdata[i].long);
-            // arrPath.set("length", lengthPath);
-            // console.log(arrPath);
+
             arrShort.push(arrPath);
-            // console.log(arrShort);
 
             // 정렬 기준 선언
             var sortingField = "length";
@@ -132,11 +127,8 @@ class mapComp extends Component {
             arrShort.sort(function (a, b) {
               return a[sortingField] - b[sortingField];
             });
-            // console.log(arrShort);
-            // arrShort
-            // console.log(arrShort);
           }
-
+          console.log(arrShort);
           var shrtsPath = [
             new kakao.maps.LatLng(lat, lon),
             new kakao.maps.LatLng(arrShort[0].lat, arrShort[0].long),
@@ -153,7 +145,11 @@ class mapComp extends Component {
 
           // Draw line
           drwShrtLine.setMap(map);
-        },
+          this.setState({
+            lat: arrShort[0].lat,
+            long: arrShort[0].long,
+          });
+        }.bind(this),
         function (error) {
           console.error(error);
         },
@@ -162,15 +158,13 @@ class mapComp extends Component {
           maximumAge: 0,
           timeout: Infinity,
         }
-      ); // 내 위도 경도 가져오기
+      );
     } else {
       // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
       var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
         message = "geolocation을 사용할수 없어요..";
     }
-    // console.log(arrShort[Object.keys(arrShort)[0]]);
-    // end if
 
     // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
     function makeOverListener(map, marker, infowindow) {
