@@ -23,16 +23,16 @@ class Header extends Component {
               <a href="/">haZard</a>
             </span>
             <ul className="ul-menu">
-              <li class="li-menu">
+              <li className="li-menu">
                 <a href="/">Menu 1</a>
               </li>
-              <li class="li-menu">
+              <li className="li-menu">
                 <a href="/">Menu 2</a>
               </li>
-              <li class="li-menu">
+              <li className="li-menu">
                 <a href="/">Menu 3</a>
               </li>
-              <li class="li-menu">
+              <li className="li-menu">
                 <a href="/">Menu 4</a>
               </li>
             </ul>

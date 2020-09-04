@@ -15,21 +15,20 @@ class mapComp extends Component {
     };
   }
 
+  // Component DidMount
   componentDidMount() {
     // infoWindow
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
+    var arrShort = [];
+
     // 내 위도 경도 가져오기
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
-      var arrShort = [];
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       navigator.geolocation.getCurrentPosition(
         function (position) {
           // 위도, 경도 바인딩
-
-          // 최단거리 검사할 배열
-
           var lat = position.coords.latitude, // 위도
             lon = position.coords.longitude; // 경도
           // 지도 띄우기
@@ -117,7 +116,13 @@ class mapComp extends Component {
               long: markerdata[i].long,
               length: lengthPath,
             };
+            // var arrPath = new Map();
+            // arrPath.set("lat", markerdata[i].lat);
+            // arrPath.set("long", markerdata[i].long);
+            // arrPath.set("length", lengthPath);
+            // console.log(arrPath);
             arrShort.push(arrPath);
+            // console.log(arrShort);
 
             // 정렬 기준 선언
             var sortingField = "length";
@@ -127,8 +132,9 @@ class mapComp extends Component {
             arrShort.sort(function (a, b) {
               return a[sortingField] - b[sortingField];
             });
-
-            // console.log("arrShort : ", arrShort);
+            // console.log(arrShort);
+            // arrShort
+            // console.log(arrShort);
           }
 
           var shrtsPath = [
@@ -156,13 +162,15 @@ class mapComp extends Component {
           maximumAge: 0,
           timeout: Infinity,
         }
-      );
+      ); // 내 위도 경도 가져오기
     } else {
       // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
       var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
         message = "geolocation을 사용할수 없어요..";
     }
+    // console.log(arrShort[Object.keys(arrShort)[0]]);
+    // end if
 
     // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
     function makeOverListener(map, marker, infowindow) {
@@ -184,6 +192,8 @@ class mapComp extends Component {
     var shrtLong = this.state.long;
     console.log("shortLat : ", this.state.lat);
     console.log("shortLong : ", this.state.long);
+
+    console.log("Test State : ", this.state.lat);
     return (
       <>
         <div
