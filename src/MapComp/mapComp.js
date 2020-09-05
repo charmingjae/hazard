@@ -27,7 +27,7 @@ class mapComp extends Component {
     if (navigator.geolocation) {
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       navigator.geolocation.getCurrentPosition(
-        function test(position) {
+        function (position) {
           // 위도, 경도 바인딩
           var lat = position.coords.latitude, // 위도
             lon = position.coords.longitude; // 경도
@@ -184,10 +184,6 @@ class mapComp extends Component {
   render() {
     var shrtLat = this.state.lat;
     var shrtLong = this.state.long;
-    console.log("shortLat : ", this.state.lat);
-    console.log("shortLong : ", this.state.long);
-
-    console.log("Test State : ", this.state.lat);
     return (
       <>
         <div
@@ -198,7 +194,9 @@ class mapComp extends Component {
           }}
         ></div>
         <div className="shltInfo">
-          현재 내 위치와 가장 가까운 위치 : {shrtLat}, {shrtLong}
+          내 위치와 가장 가까운 대피소는?
+          <br />
+          {shrtLat}, {shrtLong}
         </div>
       </>
     );
