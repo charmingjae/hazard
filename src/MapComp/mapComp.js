@@ -12,6 +12,7 @@ class mapComp extends Component {
     this.state = {
       lat: 0,
       long: 0,
+      locName: "",
     };
   }
 
@@ -115,6 +116,7 @@ class mapComp extends Component {
               lat: markerdata[i].lat,
               long: markerdata[i].long,
               length: lengthPath,
+              name: markerdata[i].locName,
             };
 
             arrShort.push(arrPath);
@@ -148,6 +150,7 @@ class mapComp extends Component {
           this.setState({
             lat: arrShort[0].lat,
             long: arrShort[0].long,
+            locName: arrShort[0].name,
           });
         }.bind(this),
         function (error) {
@@ -184,20 +187,23 @@ class mapComp extends Component {
   render() {
     var shrtLat = this.state.lat;
     var shrtLong = this.state.long;
+    var locName = this.state.locName;
     return (
       <>
-        <div
-          id="myMap"
-          style={{
-            width: "100%",
-            height: "500px",
-          }}
-        ></div>
         <div className="shltInfo">
+          <span className="warnLength">
+            * 현재 내 위치와 오차가 있을 수 있습니다. *
+          </span>
+          <br />
           내 위치와 가장 가까운 대피소는?
           <br />
-          {shrtLat}, {shrtLong}
+          <br />
+          <span className="spnLocName">{locName}</span>
+          <br />
+          <span className="spnLatLng">{shrtLat}</span>,
+          <span className="spnLatLng">{shrtLong}</span>
         </div>
+        <div id="myMap"></div>
       </>
     );
   }

@@ -3,9 +3,10 @@ html{
 }
 
 .divHead{
-    height: 200px;
+    height: 170px;
     width: 100%;
     margin: none;
+    
     padding: none;
     /* background-color:blue; */
 }
