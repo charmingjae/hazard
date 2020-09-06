@@ -183,6 +183,40 @@ class mapComp extends Component {
       };
     }
   }
+  // ComponentDidMount Finished
+
+  // Button Event
+  sendMsg = () => {
+    window.Kakao.Link.sendDefault({
+      oobjectType: "location",
+      address: "경기 성남시 분당구 판교역로 235 에이치스퀘어 N동 8층",
+      addressTitle: this.state.locName,
+      content: {
+        title: "신메뉴 출시♥︎ 체리블라썸라떼",
+        description: "이번 주는 체리블라썸라떼 1+1",
+        imageUrl:
+          "http://k.kakaocdn.net/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png",
+        link: {
+          mobileWebUrl: "https://developers.kakao.com",
+          webUrl: "https://developers.kakao.com",
+        },
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845,
+      },
+      buttons: [
+        {
+          title: "웹으로 보기",
+          link: {
+            mobileWebUrl: "https://developers.kakao.com",
+            webUrl: "https://developers.kakao.com",
+          },
+        },
+      ],
+    });
+  };
 
   render() {
     var shrtLat = this.state.lat;
@@ -198,7 +232,23 @@ class mapComp extends Component {
           내 위치와 가장 가까운 대피소는?
           <br />
           <br />
-          <span className="spnLocName">{locName}</span>
+          <span className="spnLocName">
+            <a
+              href={
+                "https://map.kakao.com/link/to/" +
+                locName +
+                "," +
+                shrtLat +
+                "," +
+                shrtLong
+              }
+            >
+              {locName}
+            </a>
+          </span>
+          <button className="btnSubmit" onClick={this.sendMsg}>
+            위치 보내기
+          </button>
           <br />
           <span className="spnLatLng">{shrtLat}</span>,
           <span className="spnLatLng">{shrtLong}</span>
