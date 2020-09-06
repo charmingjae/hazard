@@ -5,6 +5,7 @@
 import React, { Component } from "react";
 import { markerdata } from "../JSON/csvjson";
 import "../css/mapComp.css";
+import Button from "@material-ui/core/Button";
 
 class mapComp extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class mapComp extends Component {
       lat: 0,
       long: 0,
       locName: "",
+      locAddr: "",
     };
   }
 
@@ -117,6 +119,7 @@ class mapComp extends Component {
               long: markerdata[i].long,
               length: lengthPath,
               name: markerdata[i].locName,
+              addr: markerdata[i].addr,
             };
 
             arrShort.push(arrPath);
@@ -151,6 +154,7 @@ class mapComp extends Component {
             lat: arrShort[0].lat,
             long: arrShort[0].long,
             locName: arrShort[0].name,
+            locAddr: arrShort[0].addr,
           });
         }.bind(this),
         function (error) {
@@ -188,30 +192,49 @@ class mapComp extends Component {
   // Button Event
   sendMsg = () => {
     window.Kakao.Link.sendDefault({
-      oobjectType: "location",
-      address: "경기 성남시 분당구 판교역로 235 에이치스퀘어 N동 8층",
+      objectType: "location",
+      address: this.state.locAddr,
       addressTitle: this.state.locName,
       content: {
-        title: "신메뉴 출시♥︎ 체리블라썸라떼",
-        description: "이번 주는 체리블라썸라떼 1+1",
+        title: this.state.locName,
+        description: this.state.lat + "," + this.state.long,
         imageUrl:
           "http://k.kakaocdn.net/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png",
         link: {
-          mobileWebUrl: "https://developers.kakao.com",
-          webUrl: "https://developers.kakao.com",
+          mobileWebUrl:
+            "https://map.kakao.com/link/to/" +
+            this.state.locName +
+            "," +
+            this.state.lat +
+            "," +
+            this.state.long,
+          webUrl:
+            "https://map.kakao.com/link/to/" +
+            this.state.locName +
+            "," +
+            this.state.lat +
+            "," +
+            this.state.long,
         },
-      },
-      social: {
-        likeCount: 286,
-        commentCount: 45,
-        sharedCount: 845,
       },
       buttons: [
         {
           title: "웹으로 보기",
           link: {
-            mobileWebUrl: "https://developers.kakao.com",
-            webUrl: "https://developers.kakao.com",
+            mobileWebUrl:
+              "https://map.kakao.com/link/to/" +
+              this.state.locName +
+              "," +
+              this.state.lat +
+              "," +
+              this.state.long,
+            webUrl:
+              "https://map.kakao.com/link/to/" +
+              this.state.locName +
+              "," +
+              this.state.lat +
+              "," +
+              this.state.long,
           },
         },
       ],
@@ -234,6 +257,7 @@ class mapComp extends Component {
           <br />
           <span className="spnLocName">
             <a
+              className="aLocName"
               href={
                 "https://map.kakao.com/link/to/" +
                 locName +
@@ -246,9 +270,14 @@ class mapComp extends Component {
               {locName}
             </a>
           </span>
-          <button className="btnSubmit" onClick={this.sendMsg}>
-            위치 보내기
-          </button>
+          <br />
+          <Button
+            variant="contained"
+            className="btnSendMsg"
+            onClick={this.sendMsg}
+          >
+            카카오톡으로 위치 보내기
+          </Button>
           <br />
           <span className="spnLatLng">{shrtLat}</span>,
           <span className="spnLatLng">{shrtLong}</span>

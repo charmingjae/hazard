@@ -16,9 +16,14 @@ html{
     height: 500px;
 }
 
-.spnLocName{
-    color: green;
+
+.aLocName {
+    color: #0e4bef;
+    font-size:30px;
+    font-weight: bold;
+    text-decoration: none;
 }
+
 .spnLatLng{
     font-size: 16px;
     color: #d52950;
@@ -27,4 +32,11 @@ html{
 .warnLength{
     font-size: 16px;
     color: blue;
+}
+
+.btnSendMsg{
+    background-color: yellow !important;
+    font-weight: bold !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
 }
